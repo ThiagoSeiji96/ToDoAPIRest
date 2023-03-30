@@ -1,4 +1,5 @@
 ﻿using Entidade.Base;
+using Entidade.Enums;
 
 namespace Entidade
 {
@@ -9,11 +10,13 @@ namespace Entidade
             Id = id;
             Titulo = titulo;
             Descricao = descricao;
+            Status = TarefaStatus.Iniciado;
         }
 
         public int Id { get; private set; }
         public string Titulo { get; private set; }
         public string Descricao { get; private set; }
+        public TarefaStatus Status { get; private set; }
 
 
 
@@ -21,6 +24,11 @@ namespace Entidade
         {
             Id = id;
             Descricao = descricao;
+        }
+
+        public void Finalizado()
+        {
+            Status = TarefaStatus.Finalizado;
         }
 
     }
