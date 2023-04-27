@@ -1,6 +1,7 @@
 ﻿using Dominio.InputModels;
 using Dominio.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace ToDoAPI.Controllers
 {
@@ -29,7 +30,9 @@ namespace ToDoAPI.Controllers
 
             if (pesquisa == null) return NotFound();
 
-            return Ok(pesquisa);
+            var toJson = JsonConvert.SerializeObject(pesquisa);
+
+            return Ok(toJson);
         }
 
         [HttpPost]
@@ -37,7 +40,7 @@ namespace ToDoAPI.Controllers
         {
             var id = _tarefaServico.AddTarefa(inputModel);
 
-            return CreatedAtAction(nameof(BuscarPorId), new { id = id }, inputModel);
+            return Ok(CreatedAtAction(nameof(BuscarPorId), new { id = id }, inputModel));
         }
 
         [HttpDelete("{id}")]

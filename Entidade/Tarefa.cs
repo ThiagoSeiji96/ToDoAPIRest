@@ -20,9 +20,10 @@ namespace Entidade
 
 
 
-        public void Atualizar(int id, string descricao)
+        public void Atualizar(int id, string titulo, string descricao)
         {
             Id = id;
+            Titulo = titulo;
             Descricao = descricao;
         }
 

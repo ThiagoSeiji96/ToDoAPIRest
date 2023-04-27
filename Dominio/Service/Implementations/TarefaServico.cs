@@ -25,7 +25,7 @@ namespace Dominio.Service.Implementations
             //var tarefas = _repositorio.BuscarTodos();
             var tarefas = _dbContext.Tarefas;
 
-            var tarefasViewModel = tarefas.Select(t => new TarefaViewModel(t.Titulo, t.Descricao)).ToList();
+            var tarefasViewModel = tarefas.Select(t => new TarefaViewModel(t.Id, t.Titulo, t.Descricao)).ToList();
 
             return tarefasViewModel;
         }
@@ -33,7 +33,7 @@ namespace Dominio.Service.Implementations
         {
             var tarefa = _dbContext.Tarefas.SingleOrDefault(tarefas => tarefas.Id == id);
 
-            var tarefaViewModel = new TarefaViewModel(tarefa.Titulo, tarefa.Descricao);
+            var tarefaViewModel = new TarefaViewModel(tarefa.Id, tarefa.Titulo, tarefa.Descricao);
 
             if (tarefaViewModel == null) return null;
 
@@ -60,7 +60,7 @@ namespace Dominio.Service.Implementations
         {
             var tarefa = _dbContext.Tarefas.SingleOrDefault(tarefa => tarefa.Id == inputModel.Id);
 
-            tarefa.Atualizar(inputModel.Id, inputModel.Descricao);
+            tarefa.Atualizar(inputModel.Id, inputModel.Titulo, inputModel.Descricao);
         }
     }
 }
