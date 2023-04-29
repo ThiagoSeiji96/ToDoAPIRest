@@ -54,11 +54,12 @@ namespace ToDoAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Atualizar(int id, [FromBody] UpdateTarefaInputModel inputModel)
+        public ActionResult Edit([FromBody] AddTarefaInputModel inputModel)
         {
-            _tarefaServico.AtualizarTarefa(inputModel);
+            var id = _tarefaServico.EditTarefa(inputModel);
 
-            return NoContent();
+            return Ok(CreatedAtAction(nameof(BuscarPorId), new { id = id }, inputModel));
         }
+
     }
 }

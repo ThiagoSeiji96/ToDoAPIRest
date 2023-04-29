@@ -56,11 +56,12 @@ namespace Dominio.Service.Implementations
             _dbContext.Tarefas.Remove(tarefa);
         }
 
-        public void AtualizarTarefa(UpdateTarefaInputModel inputModel)
+        public int EditTarefa(AddTarefaInputModel model)
         {
-            var tarefa = _dbContext.Tarefas.SingleOrDefault(tarefa => tarefa.Id == inputModel.Id);
+            _dbContext.Tarefas.Find(t => t.Id == model.Id).Atualizar(model.Id, model.Titulo, model.Descricao);
 
-            tarefa.Atualizar(inputModel.Id, inputModel.Titulo, inputModel.Descricao);
+            return model.Id;
         }
+
     }
 }
