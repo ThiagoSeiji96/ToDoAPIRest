@@ -11,7 +11,7 @@ namespace Entidade
             Nome = nome;
             DtNascimento = dtNascimento;
 
-            ListasUsuario = new List<ListaDeTarefas>();
+            ListaDeTarefasDoUsuario = new List<ListaDeTarefa>();
         }
 
         public string Email { get; private set; }
@@ -19,7 +19,7 @@ namespace Entidade
         public DateTime DtCriacao { get; private set; }
         public DateTime DtNascimento { get; private set; }
         public string Nome { get; private set; }
-        public List<ListaDeTarefas> ListasUsuario { get; private set; }
+        public List<ListaDeTarefa> ListaDeTarefasDoUsuario { get; private set; }
 
     }
 }

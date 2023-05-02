@@ -1,5 +1,4 @@
 ﻿using Entidade.Base;
-using Entidade.Enums;
 
 namespace Entidade
 {
@@ -9,25 +8,21 @@ namespace Entidade
         {
             Titulo = titulo;
             Descricao = descricao;
-            Status = TarefaStatus.Iniciado;
         }
 
-        public int Id { get; private set; }
         public string Titulo { get; private set; }
         public string Descricao { get; private set; }
+        public ListaDeTarefa ListaDeTarefa { get; private set; }
+        public int IdLista { get; private set; }
+        public int IdUsuario {  get; private set; }
 
 
-        public void Atualizar(int id, string titulo, string descricao)
-        {
-            Id = id;
-            Titulo = titulo;
-            Descricao = descricao;
-        }
-
-        public void Finalizado()
-        {
-            Status = TarefaStatus.Finalizado;
-        }
+        //public void Atualizar(int id, string titulo, string descricao)
+        //{
+        //    Id = id;
+        //    Titulo = titulo;
+        //    Descricao = descricao;
+        //}
 
     }
 }
