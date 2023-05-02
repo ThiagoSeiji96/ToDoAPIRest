@@ -2,12 +2,7 @@
 using Dominio.Service.Interface;
 using Dominio.ViewModels;
 using Entidade;
-using Repositorio;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Infraestrutura;
 
 namespace Dominio.Service.Implementations
 {
@@ -42,7 +37,7 @@ namespace Dominio.Service.Implementations
 
         public int AddTarefa(AddTarefaInputModel model)
         {
-            var tarefa = new Tarefa(model.Id, model.Titulo, model.Descricao);
+            var tarefa = new Tarefa(model.Titulo, model.Descricao);
 
             _dbContext.Tarefas.Add(tarefa);
 
@@ -58,9 +53,12 @@ namespace Dominio.Service.Implementations
 
         public int EditTarefa(AddTarefaInputModel model)
         {
-            _dbContext.Tarefas.Find(t => t.Id == model.Id).Atualizar(model.Id, model.Titulo, model.Descricao);
+            throw new NotImplementedException();
+            // Verificar se a lógica se mantem para a consulta no BD
 
-            return model.Id;
+            //_dbContext.Tarefas.Find(t => t.Id == model.).Atualizar(model.Id, model.Titulo, model.Descricao);
+
+            //return model.Id;
         }
 
     }
