@@ -1,6 +1,7 @@
 using Dominio.Service.Implementations;
 using Dominio.Service.Interface;
-using Repositorio;
+using Microsoft.EntityFrameworkCore;
+using Infraestrutura;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 //var connectionString = builder.Configuration.GetConnectionString("ToDoApp");
 //builder.Services.AddDbContext<ToDoDbContext>(options => options.UseSqlServer(connectionString));
 
-builder.Services.AddSingleton<ToDoDbContext>();
+var connectionString = builder.Configuration.GetConnectionString("ToDoApp");
+builder.Services.AddDbContext<ToDoDbContext>(options => options.UseSqlServer(connectionString));
+
+//builder.Services.AddSingleton<ToDoDbContext>();
 
 builder.Services.AddScoped<ITarefaServico, TarefaServico>();
 

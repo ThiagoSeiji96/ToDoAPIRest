@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoAPI", "ToDoAPI.csproj",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidade", "..\Entidade\Entidade.csproj", "{0A776AEB-0346-4038-AF08-E4C8243183B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositorio", "..\Infraestrutura\Repositorio.csproj", "{3200FDBD-4951-4BA2-B5E2-9D48FAD40F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestrutura", "..\Infraestrutura\Infraestrutura.csproj", "{3200FDBD-4951-4BA2-B5E2-9D48FAD40F76}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "..\Dominio\Dominio.csproj", "{EFD9A788-56B0-40DC-A0CE-C4C375BFC486}"
 EndProject
