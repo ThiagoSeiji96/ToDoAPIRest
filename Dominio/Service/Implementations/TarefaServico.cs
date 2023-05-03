@@ -2,7 +2,7 @@
 using Dominio.Service.Interface;
 using Dominio.ViewModels;
 using Entidade;
-using Infraestrutura;
+using Repositorio;
 
 namespace Dominio.Service.Implementations
 {

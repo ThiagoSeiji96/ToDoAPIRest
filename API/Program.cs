@@ -1,7 +1,7 @@
 using Dominio.Service.Implementations;
 using Dominio.Service.Interface;
 using Microsoft.EntityFrameworkCore;
-using Infraestrutura;
+using Repositorio;
 
 var builder = WebApplication.CreateBuilder(args);
 
