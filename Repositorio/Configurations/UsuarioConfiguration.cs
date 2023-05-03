@@ -14,7 +14,7 @@ namespace Repositorio.Configurations
             builder
                 .HasMany(x => x.ListaDeTarefasDoUsuario)
                 .WithOne()
-                .HasForeignKey(x=>x.IdLista)
+                .HasForeignKey(x=>x.Id)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }
