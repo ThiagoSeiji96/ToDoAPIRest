@@ -12,6 +12,6 @@ namespace Entidade
 
         public int IdLista { get; private set; }
         public int IdUsuario { get; private set; }
-        public int IdTarefa { get; private set; }
+        public Tarefa Tarefa { get; private set; }
     }
 }
