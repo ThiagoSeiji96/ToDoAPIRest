@@ -2,23 +2,23 @@
 using Dominio.Service.Interface;
 using Dominio.ViewModels;
 using Entidade;
+using Entidade.Repositories;
 using Repositorio;
 
 namespace Dominio.Service.Implementations
 {
     public class TarefaServico : ITarefaServico
     {
-        private readonly ToDoDbContext _dbContext;
-        public TarefaServico(ToDoDbContext dbContext)
+        private readonly ITarefaRepositorio _tarefaRepositorio;
+        public TarefaServico(ITarefaRepositorio tarefaRepositorio)
         {
-            _dbContext = dbContext;
+            _tarefaRepositorio = tarefaRepositorio;
         }
 
 
         public List<TarefaViewModel> BuscarTodos()
         {
-            //var tarefas = _repositorio.BuscarTodos();
-            var tarefas = _dbContext.Tarefas;
+            var tarefas = _tarefaRepositorio.GetAll();
 
             var tarefasViewModel = tarefas.Select(t => new TarefaViewModel(t.Id, t.Titulo, t.Descricao)).ToList();
 
@@ -26,7 +26,7 @@ namespace Dominio.Service.Implementations
         }
         public TarefaViewModel BuscarPorId(int id)
         {
-            var tarefa = _dbContext.Tarefas.SingleOrDefault(tarefas => tarefas.Id == id);
+            var tarefa = _tarefaRepositorio.GetById(id);
 
             var tarefaViewModel = new TarefaViewModel(tarefa.Id, tarefa.Titulo, tarefa.Descricao);
 
@@ -39,26 +39,29 @@ namespace Dominio.Service.Implementations
         {
             var tarefa = new Tarefa(model.Titulo, model.Descricao);
 
-            _dbContext.Tarefas.Add(tarefa);
+            _tarefaRepositorio.Post(tarefa);
 
             return tarefa.Id;
         }
 
         public void Deletar(int id)
         {
-            var tarefa = _dbContext.Tarefas.SingleOrDefault(tarefa => tarefa.Id == id);
+            var tarefa = _tarefaRepositorio.GetById(id);
 
-            _dbContext.Tarefas.Remove(tarefa);
+            _tarefaRepositorio.Delete(tarefa.Id);
         }
 
-        public int EditTarefa(AddTarefaInputModel model)
+        public int EditTarefa(UpdateTarefaInputModel model)
         {
-            throw new NotImplementedException();
-            // Verificar se a lógica se mantem para a consulta no BD
 
-            //_dbContext.Tarefas.Find(t => t.Id == model.).Atualizar(model.Id, model.Titulo, model.Descricao);
+            var tarefa = _tarefaRepositorio.GetById(model.Id);
+            if (tarefa != null)
+            {
+                tarefa.Titulo = model.Titulo;
+                tarefa.Descricao = model.Descricao;
+            }
 
-            //return model.Id;
+            return model.Id;
         }
 
     }

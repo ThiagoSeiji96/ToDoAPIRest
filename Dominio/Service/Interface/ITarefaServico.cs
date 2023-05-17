@@ -15,6 +15,6 @@ namespace Dominio.Service.Interface
         TarefaViewModel BuscarPorId(int id);
         int AddTarefa(AddTarefaInputModel tarefa);
         void Deletar(int id);
-        int EditTarefa(AddTarefaInputModel tarefa);
+        int EditTarefa(UpdateTarefaInputModel tarefa);
     }
 }
