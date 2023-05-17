@@ -12,8 +12,8 @@ using Repositorio;
 namespace Repositorio.Persistence.Migrations
 {
     [DbContext(typeof(ToDoDbContext))]
-    [Migration("20230503160501_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230516170523_tabListasDeTarefasAtualizada")]
+    partial class tabListasDeTarefasAtualizada
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

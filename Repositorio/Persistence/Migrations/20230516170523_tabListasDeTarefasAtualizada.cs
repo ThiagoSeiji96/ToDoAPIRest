@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Repositorio.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class tabListasDeTarefasAtualizada : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -35,7 +35,7 @@ namespace Repositorio.Persistence.Migrations
                     Id = table.Column<int>(type: "int", nullable: false),
                     IdLista = table.Column<int>(type: "int", nullable: false),
                     IdUsuario = table.Column<int>(type: "int", nullable: false),
-                    TarefaId = table.Column<int>(type: "int", nullable: false)
+                    TarefaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
