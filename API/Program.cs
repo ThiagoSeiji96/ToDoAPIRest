@@ -1,7 +1,9 @@
 using Dominio.Service.Implementations;
 using Dominio.Service.Interface;
+using Entidade.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Repositorio;
+using Repositorio.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +17,13 @@ builder.Services.AddDbContext<ToDoDbContext>(options => options.UseSqlServer(con
 
 //builder.Services.AddSingleton<ToDoDbContext>();
 
+builder.Services.AddScoped<ITarefaRepositorio, TarefaRepositorio>();
+builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+builder.Services.AddScoped<IListaDeTarefasRepositorio, ListaDeTarefasRepositorio>();
 builder.Services.AddScoped<ITarefaServico, TarefaServico>();
+builder.Services.AddScoped<IUsuarioServico, UsuarioServico>();
+builder.Services.AddScoped<IListaDeTarefasServico, ListaDeTarefasServico>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

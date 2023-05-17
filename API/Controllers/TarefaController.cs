@@ -48,13 +48,13 @@ namespace ToDoAPI.Controllers
         {
             _tarefaServico.Deletar(id);
 
-            if (id == null) return NotFound();
+            if (id != 0) return NoContent();
 
-            return NoContent();
+            return NotFound();
         }
 
         [HttpPut("{id}")]
-        public ActionResult Edit([FromBody] AddTarefaInputModel inputModel)
+        public ActionResult Edit([FromBody] UpdateTarefaInputModel inputModel)
         {
             var id = _tarefaServico.EditTarefa(inputModel);
 
