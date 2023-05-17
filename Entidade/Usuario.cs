@@ -10,8 +10,6 @@ namespace Entidade
             Password = password;
             Nome = nome;
             DtNascimento = dtNascimento;
-
-            ListaDeTarefasDoUsuario = new List<ListaDeTarefa>();
         }
 
         public string Email { get; private set; }

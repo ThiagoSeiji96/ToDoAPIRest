@@ -10,8 +10,8 @@ namespace Entidade
             Descricao = descricao;
         }
 
-        public string Titulo { get; private set; }
-        public string Descricao { get; private set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
         public ListaDeTarefa ListaDeTarefa { get; private set; }
         public int IdLista { get; private set; }
         public int IdUsuario {  get; private set; }
