@@ -28,10 +28,10 @@ namespace Repositorio.Repositories
             return _dbContext.Usuarios.FirstOrDefault(u => u.Id == id);
         }
 
-        public Usuario GetUserByEmailAndPassword(string email, string password)
+        public Usuario GetUserByEmailAndPassword(string email, string passwordHash)
         {
 
-            return _dbContext.Usuarios.FirstOrDefault(u => u.Email == email && u.Password == password);
+            return _dbContext.Usuarios.FirstOrDefault(u => u.Email == email && u.Password == passwordHash);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Dominio.InputModels
+﻿using System.Text.Json.Serialization;
+
+namespace Dominio.InputModels
 {
     public class CreateUserInputModel
     {

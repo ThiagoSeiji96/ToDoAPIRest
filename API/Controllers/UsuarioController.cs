@@ -1,6 +1,9 @@
 ﻿using Dominio.InputModels;
+using Dominio.Service.Implementations;
 using Dominio.Service.Interface;
+using Dominio.ViewModels;
 using Entidade;
+using Entidade.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,9 +13,11 @@ namespace ToDoAPI.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioServico _usuarioServico;
-        public UsuarioController(IUsuarioServico usuarioServico)
+        private readonly IAuthService _authService;
+        public UsuarioController(IUsuarioServico usuarioServico, IAuthService authService)
         {
             _usuarioServico = usuarioServico;
+            _authService = authService;
         }
 
         [HttpGet("{id}")]
@@ -41,10 +46,17 @@ namespace ToDoAPI.Controllers
         }
 
         [HttpPut("login")]
-        [AllowAnonymous]
-        public IActionResult Login([FromBody] LoginInputModel login)
+        public IActionResult Login([FromBody] LoginInputModel inputModel)
         {
-            throw new NotImplementedException();
+            var login = new LoginInputModel(inputModel.Email, inputModel.Password);
+
+            if (login == null) return BadRequest();
+
+            var getToken = _usuarioServico.Login(login);
+            var token = getToken.Token;
+
+            return Ok(token);
+            
         }
     }
 }
